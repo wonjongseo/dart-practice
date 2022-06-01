@@ -1,87 +1,55 @@
+int testFunction() {
+  const y = 20;
+  print("$x, $y");
+  return x + y;
+}
+
+const x = 20;
 main() {
-  int b = 10;
-  double d = 12.3;
-  String c = 'abc';
-  bool e = true;
-  print("$b $c $d $e");
-  List f = [1, 2, 3];
-  f.add(4);
-  f.add(5);
+  const x = 10;
 
-  print("$f, ${f.length}, ${f[0]}");
-
-  Set g = {"a", "B", "c"};
-
-  g.add("d");
-  g.add(1);
-
-  print("$g , ${g.length}, ${g.toList()[1]}");
-
-  Map h = {"fisrt ": "one", "second ": "two", "third": "three"};
-
-  h.addAll({"fourth": "four"});
-
-  print("$h, ${h.length} , ${h['fisrt']}");
-
-  dynamic j = 10;
-  print(j);
-  j = "a";
-  print(j);
-
-  var lists = ['l', 'i', 's', 't'];
-
-  lists.forEach((element) {
-    print(element);
-  });
-
-  var sets = {'s', 'e', 't'};
-
-  sets.forEach((element) {
-    print(element);
-  });
-
-  var maps = {'k': 'm', "e": "a", 'y': 'p'};
-
-  maps.forEach((key, value) {
-    print('$key : $value');
-  });
-
-  for (var i = 0; i < 3; i++) {
-    print(i);
+  int innerFunction(int a) {
+    int b = 10;
+    return a + b;
   }
 
-  for (var i in ['f', 'oo', 'r ', ' i', 'n']) {
-    if (i == 'oo' || i == 'n') continue;
-    print(i);
+  int oneLine(a, b) => a + b;
+  int oneLine2(a, b) {
+    return a + b;
   }
 
-  for (var i in {'s', 'e', 't'}) {
-    print(i);
+  print(innerFunction(2));
+  print(oneLine(1, 2));
+  print(oneLine2(3, 4));
+
+  // void enableFlags({bool bold, bool hidden}) {
+  //   print('$bold $hidden');
+  // }
+
+  // enableFlags(hidden: true, bold: true);
+
+  String say(String from, String msg,
+      [String device = 'unknown', String mood = 'unkown']) {
+    return '$from says $msg platform: ${device} mood: ${mood}';
   }
 
-  var w = 0;
+  say("hello", "a");
 
-  while (true) {
-    if (w == 3) break;
-
-    if (w == 1) {
-      w++;
-      print('w');
-    } else {
-      w++;
-      print(w);
+  void errorFunc() {
+    try {
+      throw Exception("reigaidesu");
+    } on Exception catch (e) {
+      print(e);
+      // rethrow;
+    } finally {
+      print("finally");
     }
   }
 
-  var command = 'CLOSED';
-  
-  switch (command) {
-    case 'CLOSED':
-      print('CLOSED');
-      continue nowClosed;  // continueの場合、nowClosedラベルを実行する
-    nowClosed:
-    case 'NOW_CLOSED':
-      print('NOW_CLOSED');
-      break;
+  try {
+    errorFunc();
+  } catch (e, s) {
+    print(e);
+    print(s);
   }
 }
